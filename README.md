@@ -15,12 +15,14 @@ Built as part of the **Distributed Database (DDB) course**.
 
 ## 📁 Project Structure
 
+```
 distributed-control-system/
 ├── master/
 │   └── main.go       # Master node - sends commands
 ├── slave/
 │   └── main.go       # Slave node - receives & executes commands
 └── README.md
+```
 
 ## 🚀 How to Run
 

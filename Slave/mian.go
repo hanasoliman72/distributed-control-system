@@ -8,17 +8,15 @@ import (
 	"os/exec"
 )
 
-// CommandRequest is the JSON body the master sends
 type CommandRequest struct {
-	Command string `json:"command"` // "background", "lock", "shutdown"
-	Param   string `json:"param"`   // used for background (image path)
+	Command string `json:"command"` 
+	Param   string `json:"param"`   
 }
 
 func executeCommand(cmd CommandRequest) error {
 	switch cmd.Command {
 
 	case "background":
-		// Changes desktop wallpaper using PowerShell
 		script := fmt.Sprintf(`
 			$code = @"
 			using System.Runtime.InteropServices;
@@ -33,7 +31,6 @@ func executeCommand(cmd CommandRequest) error {
 		return exec.Command("powershell", "-Command", script).Run()
 
 	case "lock":
-		// Locks the workstation
 		return exec.Command("rundll32.exe", "user32.dll,LockWorkStation").Run()
 
 	case "shutdown":
